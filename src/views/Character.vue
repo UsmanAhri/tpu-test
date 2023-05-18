@@ -13,10 +13,10 @@ const router = useRouter();
 const store = useStore();
 const characters = computed<Character[]>(() => store.state.characters);
 const isLoading = computed<boolean>(() => store.state.isLoading);
-let current = ref<Character | null>(null);
+let currentCharacter = ref<Character | null>(null);
 
 const favoriteCharacters = ref(
-    new Set<number>(JSON.parse(localStorage.getItem("favorites")) || [])
+    new Set<number>(JSON.parse(localStorage.getItem("favorites") as string) || [])
 );
 
 onMounted(async () => {
@@ -24,7 +24,7 @@ onMounted(async () => {
   const isCharacterFound = characters.value.find((character) => useGetCharacterID(character.url) === +id);
 
   isCharacterFound
-      ? current.value = isCharacterFound
+      ? currentCharacter.value = isCharacterFound
       : await router.push({ name: "404" })
 });
 
@@ -39,14 +39,14 @@ const addToFavorites = (id: number): void => {
   <div v-else class="box">
     <div class="button-wrap">
       <button
-          v-if="current && !favoriteCharacters.has(useGetCharacterID(current.url))"
+          v-if="currentCharacter && !favoriteCharacters.has(useGetCharacterID(currentCharacter.url))"
           class="button"
           v-text="'Add favorite'"
-          @click="addToFavorites(useGetCharacterID(current.url))"
+          @click="addToFavorites(useGetCharacterID(currentCharacter?.url || ''))"
       />
     </div>
     <div class="character-data">
-      <template v-for="(value, key) in current" :key="key">
+      <template v-for="(value, key) in currentCharacter" :key="key">
         <p class="character-data__title" v-text="key.replace('_', ' ')"/>
         <p class="character-data__value" v-text="value"/>
       </template>

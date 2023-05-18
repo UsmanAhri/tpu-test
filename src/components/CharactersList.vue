@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<IProps>(), {
 });
 
 const favoriteCharacters = ref(
-    new Set<number>(JSON.parse(localStorage.getItem("favorites")) || [])
+    new Set<number>(JSON.parse(localStorage.getItem("favorites") as string) || [])
 );
 
 const store = useStore();
