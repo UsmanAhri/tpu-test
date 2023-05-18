@@ -1,0 +1,1 @@
+import{C as e}from "./CharactersList.248bd235.js";import{_ as s}from "./index.356a1c8f.js";import{i as t,o as a,c as r,f as o}from "./vendor.c13ca459.js";import"./useGetCharacterID.258f6075.js";const c={class:"box"},_=t({setup(i){return(n,p)=>(a(),r("div",c,[o(e,{"display-only-favorites":!0})]))}});var l=s(_,[["__scopeId","data-v-2718f00c"]]);export{l as default};
