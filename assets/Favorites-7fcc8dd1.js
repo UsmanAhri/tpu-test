@@ -1,0 +1,1 @@
+import{C as e}from"./CharactersList-75b4e349.js";import{d as t,o,c as s,h as a,_ as c}from"./index-6b041e3d.js";import"./useGetCharacterID-44841d6e.js";const _={class:"box"},r=t({__name:"Favorites",setup(n){return(i,p)=>(o(),s("div",_,[a(e,{"display-only-favorites":!0})]))}});const v=c(r,[["__scopeId","data-v-c7cdac91"]]);export{v as default};
